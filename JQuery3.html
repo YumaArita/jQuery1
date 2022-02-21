@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+</head>
+
+<body>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <p id="msg"></p>
+    名前：
+    <input type="text" id="text" size="20">
+    <button type="button" id="btn">送信</button>
+    <script>
+        'use strict'
+        $(function () {
+            $('#btn').on('click',function(){
+            var name = $('#text').prop('disabled',true);
+            var btn = $('#btn').prop('disabled',true);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
