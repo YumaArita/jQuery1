@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery2</title>
+</head>
+
+<body>
+    趣味はなんですか？
+    <select id="select">
+        <option value="0"></option>
+        <option value="1">トライアスロン</option>
+        <option value="2">その他</option>
+    </select><br>
+    <p id='try'></p>
+    <p id='other'></p>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        'use strict'
+        $(function () {
+            $('#select').change(function () {
+                var val = $(this).val();
+                if(val === '1'){
+                    $('#other').hide();
+                    $('#try').show();
+                    $('#try').text('それでは好きな種目は？');
+                    $('#try').append("<input type='radio' name='sports'>Swim<input type='radio' name='sports'>Bile<input type='radio' name='sports'>Run");
+                }else if(val === '2'){
+                    $('#try').hide();
+                    $('#other').show();
+                    $('#other').text('それでは何が好き？');
+                    $('#other').append("<input type='text' size='20'>");
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
