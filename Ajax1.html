@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+</head>
+
+<body>
+
+
+    <form>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        郵便番号(ハイフンは含めない)：
+        <input id="zipcode" type="text" size="7" />
+        <button id="get_address_btn" type="button">住所取得</button><br>
+        住所：<input id="address" type="text" size="50" />
+    </form>
+
+    <script>
+        'use strict'
+        $(function () {
+            $(document).on('click', '#get_address_btn', function () {
+                $.ajax({
+                    url: 'https://zipcoda.net/api',
+                    type: 'get',
+                    dataType: 'jsonp',
+                    data: {
+                        zipcode: $('#zipcode').val()
+                    },
+                    async: true
+                }).done(function (data) {
+                    console.dir(JSON.stringify(data));
+                    $('#address').val(data.items[0].address);
+                }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert('正しい結果を得られませんでした');
+                    console.log('XMLHttpRequest:' + XMLHttpRequest);
+                    console.log('textStatus:' + textStatus);
+                    console.log('errorThrown:' + errorThrown);
+                });
+            });
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
